@@ -54,7 +54,7 @@ def main(X, Y):
 		xdiff=X-x
 		ydiff=Y-y
 		m_c = numpy.sqrt(xdiff*xdiff + ydiff*ydiff)
-	print(m_i)
+		print(m_c)
 		print("Current position: ({}, {})".format(x, y))
 		speed = math.fabs((x * y) / (X_MAX * Y_MAX)) * 100
 		if speed < MIN_SPEED:
