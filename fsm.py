@@ -36,14 +36,25 @@ def turn_left_90():
 	print("turn_left_90")
 
 
-def main():
+def main(X, Y):
 	run = True
 	state = None
+	x = pos[1]
+	y = pos[2]
+	xdiff=X-x
+	ydiff=Y-y
+	m_i = numpy.sqrt(xdiff*xdiff + ydiff*ydiff)
+	print(m_i)
+
 	while run:
 		old_state = state
 		pos = HEDGE.position()
 		x = pos[1]
 		y = pos[2]
+		xdiff=X-x
+		ydiff=Y-y
+		m_c = numpy.sqrt(xdiff*xdiff + ydiff*ydiff)
+	print(m_i)
 		print("Current position: ({}, {})".format(x, y))
 		speed = math.fabs((x * y) / (X_MAX * Y_MAX)) * 100
 		if speed < MIN_SPEED:
@@ -52,23 +63,29 @@ def main():
 			speed = MAX_SPEED
 		print("speed magnitude: {}".format(speed))
 		# SPD.set_both(speed)
-		if .5 <= x <= 1.5 and -.5 > y > -1.5:
+		if X-.5 <= pos[1] <= X+.5 and Y-.5 <= pos[2] <= Y+.5:
 			state = STATE_LEFT
-			print("STATE_LEFT")
-		elif x < 0 and y > 0:
-			state = STATE_BACK
-			print("STATE_BACK")
-		elif x < 0 and y < 0:
-			state = STATE_RIGHT
-			print("STATE_RIGHT")
+			print("turn_left_90")
+			break
+		# elif x < 0 and y > 0:
+		# 	state = STATE_BACK
+		# 	print("STATE_BACK")
+		# elif x < 0 and y < 0:
+		# 	state = STATE_RIGHT
+		# 	print("STATE_RIGHT")
 		else:
 			state = STATE_FORWARD
 			print("STATE_FORWARD")
 			# run = False # End loop after driving
-		if state != old_state:
-			turn_left_90()
+		# if state != old_state:
+		# 	turn_left_90()
+		# if state = done:
+		# 	print("here")
+		# 	print("Left")
+		# 	break
 		time.sleep(1)
-
+main(5.2, -4.1)
+main(2.5, 1.5)
 
 if __name__ == '__main__':
 	try:
