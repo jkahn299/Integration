@@ -5,15 +5,15 @@ from marvelmind import MarvelmindHedge
 from time import sleep
 import sys
 import math
-from MDD10A import direction, speed
+# from MDD10A import direction, speed
 
 global HEDGE
 HEDGE = MarvelmindHedge(tty= "/dev/ttyACM0", adr=10, debug=False)
 HEDGE.start()
-global DIR
-DIR = direction()
-global POS
-SPD = speed()
+# global DIR
+# DIR = direction()
+# global POS
+# SPD = speed()
 
 STATE_LEFT = 0
 STATE_BACK = 1
@@ -28,10 +28,12 @@ MIN_SPEED = 10
 RIGHT_ANGLE_TURN_SECS = 2
 
 def turn_left_90():
-	DIR.set_left(-20)
-	DIR.set_right(20)
+	# # DIR.set_left(-20)
+	# # DIR.set_right(20)
 	time.sleep(RIGHT_ANGLE_TURN_SECS)
-	DIR.set_both(0)
+	# DIR.set_both(0)
+	print("turn_left_90")
+
 
 def main():
 	run = True
@@ -43,9 +45,10 @@ def main():
 		y = pos[2]
 		print("Current position: ({}, {})".format(x, y))
 		speed = math.abs((x * y) / (X_MAX * Y_MAX))
-		SPD.set_both(speed)
 		if speed < MIN_SPEED:
 			speed = MIN_SPEED
+		print("speed magnitude: {}".format(speed))
+		# SPD.set_both(speed)
 		if x > 0 and y > 0:
 			state = STATE_LEFT
 			print("STATE_LEFT")
