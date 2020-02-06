@@ -35,11 +35,11 @@ def turn_left_90():
 	# DIR.set_both(0)
 	print("turn_left_90")
 
+pos = HEDGE.position()
 
 def main(X, Y):
 	run = True
 	state = None
-	pos = HEDGE.position()
 	x = pos[1]
 	y = pos[2]
 	xdiff=X-x
