@@ -12,7 +12,7 @@ HEDGE = MarvelmindHedge(tty= "/dev/ttyACM0", adr=10, debug=False)
 HEDGE.start()
 # global DIR
 # DIR = direction()
-# global POS
+ global POS
 # SPD = speed()
 
 STATE_LEFT = 0
