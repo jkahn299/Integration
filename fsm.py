@@ -36,10 +36,14 @@ def turn_left_90():
 	print("turn_left_90")
 
 
+
 def main(X, Y):
 	global HEDGE
 	run = True
 	state = None
+	HEDGE = MarvelmindHedge(tty= "/dev/ttyACM0", adr=10, debug=False)
+	HEDGE.start()
+	pos = HEDGE.position()
 	x = pos[1]
 	y = pos[2]
 	xdiff=X-x
@@ -49,7 +53,6 @@ def main(X, Y):
 
 	while run:
 		old_state = state
-		pos = HEDGE.position()
 		x = pos[1]
 		y = pos[2]
 		xdiff=X-x
