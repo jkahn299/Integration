@@ -15,12 +15,14 @@ STATE_RIGHT = 2
 STATE_FORWARD = 3
 
 
+
 def main():
 	run = True
 	state = None
 	while run:
 		pos = HEDGE.position()
-		x = pos[1], y = pos[2]
+		x = pos[1]
+		y = pos[2]
 		if x > 0 and y > 0:
 			state = STATE_LEFT
 			print("STATE_LEFT")
@@ -39,4 +41,8 @@ def main():
 
 
 if __name__ == '__main__':
-	main()
+	try:
+		main()
+	except KeyboardInterrupt:
+		HEDGE.stop()
+		sys.exit()
