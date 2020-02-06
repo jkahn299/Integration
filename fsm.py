@@ -93,7 +93,7 @@ def main(X, Y):
 if __name__ == '__main__':
 	try:
 		main(5.7, -3.9)
-		print("broken")
+		#print("broken")
 		main(8.9, -1.54)
 	except KeyboardInterrupt:
 		HEDGE.stop()
