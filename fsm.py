@@ -21,13 +21,13 @@ def main():
 	while run:
 		pos = HEDGE.position()
 		x = pos[1], y = pos[2]
-		if x > 0 && y > 0:
+		if x > 0 and y > 0:
 			state = STATE_LEFT
 			print("STATE_LEFT")
 		else if x < 0 and y > 0:
-			state = STATEijiojo
+			state = STATE_BACK
 			print("STATE_BACK")
-		else if x < 0 and< 0:
+		else if x < 0 and < 0:
 			state = STATE_RIGHT
 			print("STATE_RIGHT")
 		else:
