@@ -39,7 +39,7 @@ def main(X, Y):
 	global HEDGE
 	run = True
 	state = None
-	HEDGE = MarvelmindHedge(tty= "/dev/ttyACM2", adr=10, debug=False)
+	HEDGE = MarvelmindHedge(tty= "/dev/ttyACM2", adr=None, debug=False)
 	HEDGE.start()
 	pos = HEDGE.position()
 	x = pos[1]
