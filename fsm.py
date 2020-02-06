@@ -27,7 +27,7 @@ def main():
 		elif x < 0 and y > 0:
 			state = STATE_BACK
 			print("STATE_BACK")
-		elif x < 0 and < 0:
+		elif x < 0 and y < 0:
 			state = STATE_RIGHT
 			print("STATE_RIGHT")
 		else:
