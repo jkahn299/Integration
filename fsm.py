@@ -24,6 +24,7 @@ X_MAX = 10.9
 Y_MAX = 5.8
 
 MIN_SPEED = 10
+MAX_SPEED = 100
 
 RIGHT_ANGLE_TURN_SECS = 2
 
@@ -44,9 +45,11 @@ def main():
 		x = pos[1]
 		y = pos[2]
 		print("Current position: ({}, {})".format(x, y))
-		speed = math.fabs((x * y) / (X_MAX * Y_MAX))
+		speed = math.fabs((x * y) / (X_MAX * Y_MAX)) * 100
 		if speed < MIN_SPEED:
 			speed = MIN_SPEED
+		elif speed > MAX_SPEED:
+			speed = MAX_SPEED
 		print("speed magnitude: {}".format(speed))
 		# SPD.set_both(speed)
 		if x > 0 and y > 0:
@@ -62,7 +65,6 @@ def main():
 			state = STATE_FORWARD
 			print("STATE_FORWARD")
 			# run = False # End loop after driving
-		# drive_in_direction(state) # <---- Uncomment me when you have a driving function
 		if state != old_state:
 			turn_left_90()
 		time.sleep(1)
