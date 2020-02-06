@@ -92,7 +92,7 @@ def main(X, Y):
 
 if __name__ == '__main__':
 	try:
-		main(5.2, -4.1)
+		main(5, -4)
 		main(8.7, -1.5)
 		main(4.9, 2.95)
 	except KeyboardInterrupt:
