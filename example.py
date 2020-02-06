@@ -13,6 +13,7 @@ Z=True
 HEDGE = MarvelmindHedge(tty= "/dev/ttyACM0", adr=10, debug=False)
 HEDGE.start()
 
+# Example comment
 def position(HEDGE):
 	try:
 		#print(hedge.position()) #get last position and print
