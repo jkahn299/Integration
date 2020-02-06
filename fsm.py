@@ -98,6 +98,8 @@ if __name__ == '__main__':
 		print("broken2")
 		main(4.9, 2.95)
 		print("broken3")
+		main(1.4, -.5)
+		print("fineto")
 	except KeyboardInterrupt:
 		HEDGE.stop()
 		sys.exit()
