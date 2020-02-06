@@ -93,6 +93,7 @@ def main(X, Y):
 if __name__ == '__main__':
 	try:
 		main(5, -4)
+		main(8.9, -1.54)
 	except KeyboardInterrupt:
 		HEDGE.stop()
 		sys.exit()
