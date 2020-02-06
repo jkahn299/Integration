@@ -23,6 +23,7 @@ def main():
 		pos = HEDGE.position()
 		x = pos[1]
 		y = pos[2]
+		print("Current position: ({}, {})".format(x, y))
 		if x > 0 and y > 0:
 			state = STATE_LEFT
 			print("STATE_LEFT")
