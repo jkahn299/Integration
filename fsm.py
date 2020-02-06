@@ -60,12 +60,12 @@ def main(X, Y):
 		m_c = numpy.sqrt(xdiff*xdiff + ydiff*ydiff)
 		print(m_c)
 		print("Current position: ({}, {})".format(x, y))
-		speed = math.fabs((x * y) / (X_MAX * Y_MAX)) * 100
-		if speed < MIN_SPEED:
-			speed = MIN_SPEED
-		elif speed > MAX_SPEED:
-			speed = MAX_SPEED
-		print("speed magnitude: {}".format(speed))
+		# speed = math.fabs((x * y) / (X_MAX * Y_MAX)) * 100
+		# if speed < MIN_SPEED:
+		# 	speed = MIN_SPEED
+		# elif speed > MAX_SPEED:
+		# 	speed = MAX_SPEED
+		# print("speed magnitude: {}".format(speed))
 		# SPD.set_both(speed)
 		if X-.5 <= pos[1] <= X+.5 and Y-.5 <= pos[2] <= Y+.5:
 			state = STATE_LEFT
