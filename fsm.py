@@ -12,7 +12,7 @@ HEDGE = MarvelmindHedge(tty= "/dev/ttyACM0", adr=10, debug=False)
 HEDGE.start()
 # global DIR
 # DIR = direction()
-global POS
+global pos
 # SPD = speed()
 
 STATE_LEFT = 0
@@ -84,12 +84,11 @@ def main(X, Y):
 		# 	print("Left")
 		# 	break
 		time.sleep(1)
-main(5.2, -4.1)
-main(2.5, 1.5)
+
 
 if __name__ == '__main__':
 	try:
-		main()
+		main(5.2, -4.1)
 	except KeyboardInterrupt:
 		HEDGE.stop()
 		sys.exit()
