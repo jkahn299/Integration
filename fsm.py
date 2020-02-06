@@ -44,7 +44,7 @@ def main():
 		x = pos[1]
 		y = pos[2]
 		print("Current position: ({}, {})".format(x, y))
-		speed = math.abs((x * y) / (X_MAX * Y_MAX))
+		speed = math.fabs((x * y) / (X_MAX * Y_MAX))
 		if speed < MIN_SPEED:
 			speed = MIN_SPEED
 		print("speed magnitude: {}".format(speed))
