@@ -5,13 +5,13 @@ from marvelmind import MarvelmindHedge
 from time import sleep
 import sys
 import math
-# from MDD10A import direction, speed
+from MDD10A import direction, speed
 
 
-# global DIR
-# DIR = direction()
+global DIR
+DIR = direction()
 global pos
-# SPD = speed()
+SPD = speed()
 
 STATE_LEFT = 0
 STATE_BACK = 1
@@ -27,10 +27,10 @@ MAX_SPEED = 100
 RIGHT_ANGLE_TURN_SECS = 2
 
 def turn_left_90():
-	##DIR.set_left(-20)
-	# # DIR.set_right(20)
+	DIR.set_left(-20)
+	DIR.set_right(20)
 	time.sleep(RIGHT_ANGLE_TURN_SECS)
-	# DIR.set_both(0)
+	DIR.set_both(0)
 	print("turn_left_90")
 
 
@@ -66,7 +66,7 @@ def main(X, Y):
 		elif speed > MAX_SPEED:
 			speed = MAX_SPEED
 		print("speed magnitude: {}".format(speed))
-		# SPD.set_both(speed)
+		SPD.set_both(speed)
 		if X-.5 <= pos[1] <= X+.5 and Y-.5 <= pos[2] <= Y+.5:
 			state = STATE_LEFT
 			print("turn_left_90")
