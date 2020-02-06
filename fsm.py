@@ -58,7 +58,7 @@ def main():
 		else:
 			state = STATE_FORWARD
 			print("STATE_FORWARD")
-			run = False # End loop after driving
+			# run = False # End loop after driving
 		# drive_in_direction(state) # <---- Uncomment me when you have a driving function
 		if state != old_state:
 			turn_left_90()
