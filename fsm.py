@@ -24,10 +24,10 @@ def main():
 		if x > 0 && y > 0:
 			state = STATE_LEFT
 			print("STATE_LEFT")
-		else if x < 0 && y > 0:
-			state = STATE_BACK
+		else if x < 0 and y > 0:
+			state = STATEijiojo
 			print("STATE_BACK")
-		else if x < 0 && y < 0:
+		else if x < 0 and< 0:
 			state = STATE_RIGHT
 			print("STATE_RIGHT")
 		else:
