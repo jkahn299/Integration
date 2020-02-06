@@ -39,6 +39,7 @@ def turn_left_90():
 def main(X, Y):
 	run = True
 	state = None
+	pos = HEDGE.position()
 	x = pos[1]
 	y = pos[2]
 	xdiff=X-x
@@ -48,7 +49,6 @@ def main(X, Y):
 
 	while run:
 		old_state = state
-		pos = HEDGE.position()
 		x = pos[1]
 		y = pos[2]
 		xdiff=X-x
