@@ -37,6 +37,7 @@ def turn_left_90():
 
 
 def main(X, Y):
+	global HEDGE
 	run = True
 	state = None
 	x = pos[1]
