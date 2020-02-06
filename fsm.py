@@ -8,7 +8,7 @@ import math
 # from MDD10A import direction, speed
 
 global HEDGE
-HEDGE = MarvelmindHedge(tty= "/dev/ttyACM0", adr=10, debug=False)
+HEDGE = MarvelmindHedge(tty= "/dev/ttyACM1", adr=10, debug=False)
 HEDGE.start()
 # global DIR
 # DIR = direction()
