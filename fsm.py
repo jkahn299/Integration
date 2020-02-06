@@ -29,7 +29,7 @@ MAX_SPEED = 100
 RIGHT_ANGLE_TURN_SECS = 2
 
 def turn_left_90():
-	# # DIR.set_left(-20)
+	DIR.set_left(-20)
 	# # DIR.set_right(20)
 	time.sleep(RIGHT_ANGLE_TURN_SECS)
 	# DIR.set_both(0)
@@ -52,7 +52,7 @@ def main():
 			speed = MAX_SPEED
 		print("speed magnitude: {}".format(speed))
 		# SPD.set_both(speed)
-		if x > 0 and y > 0:
+		if .5 <= x <= 1.5 and -.5 > y > -1.5:
 			state = STATE_LEFT
 			print("STATE_LEFT")
 		elif x < 0 and y > 0:
