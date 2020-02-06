@@ -26,27 +26,30 @@ def position(HEDGE):
 		HEDGE.stop()
 		sys.exit()
 
-		def main(X, Y, Z):
+def main(X, Y, Z):
  #   hedge = MarvelmindHedge(tty = "/dev/ttyACM0", adr=10, debug=False) # create MarvelmindHedge thread
  #   hedge.start() # start thread
  while Z:
  	A = HEDGE.position()
  	X_diff = X - A[1]
- 	Y_diff = Y -A[2]
+ 	Y_diff = Y -A[2] 	
  	m = numpy.sqrt((X_diff*X_diff)+(Y_diff*Y_diff))
  	Xnew = X_diff/m
  	Ynew = Y_diff/m
  	if (A[1] - 1 <=  X <= A[1] + 1 and A[2]-1 <= Y <= A[2] + 1):
  		print("Arrived")
  		Z = False
- 		break
  		print ("X1: " + str(X))
  		print("Y1: " + str(Y))
  		print("X2: " + str(Xnew))
  		print("Y2: " + str(Ynew))
- 		time.sleep(1)
+ 		break
+ 	time.sleep(1)
 #	sys.exit()
-main(1, -.5, Z)
+
+if __name__ == '__main__':
+	main(1, -0.5, Z)
+
     #    try:
      #       sleep(1)
       #      # print (hedge.position()) # get last position and print
