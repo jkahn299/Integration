@@ -38,12 +38,11 @@ def main(X, Y, Z):
  	Ynew = Y_diff/m
  	if (A[1] - 1 <=  X <= A[1] + 1 and A[2]-1 <= Y <= A[2] + 1):
  		print("Arrived")
- 		Z = False
+ 		# Z = False
  		print ("X1: " + str(X))
  		print("Y1: " + str(Y))
  		print("X2: " + str(Xnew))
  		print("Y2: " + str(Ynew))
- 		break
  	time.sleep(1)
 #	sys.exit()
 
