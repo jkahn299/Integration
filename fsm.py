@@ -1,5 +1,13 @@
 #!/usr/bin/env python
 import time
+import numpy
+from marvelmind import MarvelmindHedge
+from time import sleep
+import sys
+
+global HEDGE
+HEDGE = MarvelmindHedge(tty= "/dev/ttyACM0", adr=10, debug=False)
+HEDGE.start()
 
 STATE_LEFT = 0
 STATE_BACK = 1
