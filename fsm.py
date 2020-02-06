@@ -29,7 +29,7 @@ MAX_SPEED = 100
 RIGHT_ANGLE_TURN_SECS = 2
 
 def turn_left_90():
-	DIR.set_left(-20)
+	##DIR.set_left(-20)
 	# # DIR.set_right(20)
 	time.sleep(RIGHT_ANGLE_TURN_SECS)
 	# DIR.set_both(0)
