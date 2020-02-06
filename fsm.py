@@ -18,8 +18,8 @@ STATE_BACK = 1
 STATE_RIGHT = 2
 STATE_FORWARD = 3
 
-X_MAX = 20
-Y_MAX = 20
+X_MAX = 10.9
+Y_MAX = 5.8
 
 MIN_SPEED = 10
 MAX_SPEED = 100
@@ -92,8 +92,14 @@ def main(X, Y):
 
 if __name__ == '__main__':
 	try:
-		main(5, -4)
+		main(5.7, -3.9)
+		print("broken")
 		main(8.9, -1.54)
+		print("broken2")
+		main(4.9, 2.95)
+		print("broken3")
+		main(1.4, -.5)
+		print("fineto")
 	except KeyboardInterrupt:
 		HEDGE.stop()
 		sys.exit()
