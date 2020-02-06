@@ -8,8 +8,8 @@ import math
 # from MDD10A import direction, speed
 
 global HEDGE
-HEDGE = MarvelmindHedge(tty= "/dev/ttyACM0", adr=10, debug=False)
-HEDGE.start()
+ HEDGE = MarvelmindHedge(tty= "/dev/ttyACM0", adr=10, debug=False)
+ HEDGE.start()
 # global DIR
 # DIR = direction()
 global pos
@@ -35,11 +35,14 @@ def turn_left_90():
 	# DIR.set_both(0)
 	print("turn_left_90")
 
-pos = HEDGE.position()
+
 
 def main(X, Y):
 	run = True
 	state = None
+	HEDGE = MarvelmindHedge(tty= "/dev/ttyACM0", adr=10, debug=False)
+	HEDGE.start()
+	pos = HEDGE.position()
 	x = pos[1]
 	y = pos[2]
 	xdiff=X-x
