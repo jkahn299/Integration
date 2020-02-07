@@ -49,7 +49,7 @@ class speed():
 		print(self.s)
 		if(self.s < speed):	
 			self.s=self.s+5
-			motor.ChangeDutyCycle(self.s)
+			motor.ChangeDutyCycle(int(self.s))
 		elif (self.s > speed):
 			self.s=self.s-5
 			motor.ChangeDutyCycle(int(self.s))
