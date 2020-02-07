@@ -7,25 +7,60 @@ import sys
 import math
 # from MDD10A import direction, speed
 # import math
-# import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 # from time import sleep
-# GPIO.setmode(GPIO.BOARD)
-# GPIO.setwarnings(False)
-# PWM1=11
-# PWM2=12
-# DIR1=13
-# DIR2=15
-# GPIO.setup(PWM1,GPIO.OUT)
-# GPIO.setup(PWM2,GPIO.OUT)
-# GPIO.setup(DIR1,GPIO.OUT)
-# GPIO.setup(DIR2,GPIO.OUT)
-# p1=GPIO.PWM(PWM1, 1000)
-# p2=GPIO.PWM(PWM2, 1000)
+GPIO.setmode(GPIO.BOARD)
+GPIO.setwarnings(False)
+PWM1=11
+PWM2=12
+DIR1=13
+DIR2=15
+GPIO.setup(PWM1,GPIO.OUT)
+GPIO.setup(PWM2,GPIO.OUT)
+GPIO.setup(DIR1,GPIO.OUT)
+GPIO.setup(DIR2,GPIO.OUT)
+p1=GPIO.PWM(PWM1, 1000)
+p2=GPIO.PWM(PWM2, 1000)
+p1.start(0)
+p2.start(0)
 
-# global DIR
-# DIR = direction()
 global pos
-# SPD = speed()
+
+class direction():
+	def __init__(self, motor):
+		self.m=motor
+	def change_direction(self, direction):
+		self.d=direction
+		if(self.m=="ONE"):
+			if self.d=="forward":
+				GPIO.output(DIR1, GPIO.HIGH)
+			elif self.d=="reverse":
+				GPIO.output(DIR1,GPIO.LOW)
+		elif self.m=="TWO":
+			if self.d=="forward":
+				GPIO.output(DIR2,GPIO.LOW)
+			elif self.d=="reverse":
+				GPIO.output(DIR2,GPIO.HIGH)
+
+class speed():
+	def __init__(self):
+		currentspeed=self.s
+		self.s=0.0
+	def set_motor(self, speed):
+		current = math.round(self.s)
+		while current != speed:
+			sign = (speed - current) / math.abs(speed - current)
+			motor.ChangeDutyCycle(current + (1 * sign))
+			sleep(0.01)
+	def get(self):
+		return float(self.s)
+
+def motor_off():
+	GPIO.output(DIR1,GPIO.LOW)
+	GPIO.output(DIR2,GPIO.LOW)
+	p1.ChangeDutyCycle(0)
+	p2.ChangeDutyCycle(0)
+
 
 STATE_LEFT = 0
 STATE_BACK = 1
@@ -38,21 +73,20 @@ Y_MAX = 5.8
 MIN_SPEED = 10
 MAX_SPEED = 100
 
-RIGHT_ANGLE_TURN_SECS = 2
+RIGHT_ANGLE_TURN_SECS = 3
 
-# m1=motor("ONE")
-# m2=motor("TWO")
-# s1=speed()
-# s2=speed()
-# p1.start(0)
-# p2.start(0)
+m1=direction("ONE")
+m2=direction("TWO")
+s1=speed()
+s2=speed()
+
 
 def turn_left_90():
-	# m1.DIR.change_direction("forward")
-	# m2.DIR.change_direction("reverse")
-	# DIR.set_right(20)
+	m1.change_direction("forward")
+	m2.change_direction("reverse")
+	s1.set_motor(25)
+	s2.set_motor(25)
 	time.sleep(RIGHT_ANGLE_TURN_SECS)
-	# DIR.set_both(0)
 	print("turn_left_90")
 
 
@@ -88,31 +122,20 @@ def main(X, Y):
 		elif speed > MAX_SPEED:
 			speed = MAX_SPEED
 		print("speed magnitude: {}".format(speed))
-		# SPD.set_both(speed)
+		s1.set_motor(speed)
 		if X-.5 <= pos[1] <= X+.5 and Y-.5 <= pos[2] <= Y+.5:
-			state = STATE_LEFT
+			motor_off()
+			time.sleep(1.5)
 			turn_left_90()
-			#print("turn_left_90")
+			motor_off()
 			break
-		# elif x < 0 and y > 0:
-		# 	state = STATE_BACK
-		# 	print("STATE_BACK")
-		# elif x < 0 and y < 0:
-		# 	state = STATE_RIGHT
-		# 	print("STATE_RIGHT")
+		
 		else:
-			state = STATE_FORWARD
-			# m1.DIR.change_direction("forward")
-			# m2.DIR.change_direction("forward")
-			# s1.set_both
 			print("STATE_FORWARD")
-			# run = False # End loop after driving
-		# if state != old_state:
-		# 	turn_left_90()
-		# if state = done:
-		# 	print("here")
-		# 	print("Left")
-		# 	break
+			m1.change_direction("forward")
+			m2.change_direction("forward")
+			
+
 		time.sleep(1)
 
 
