@@ -147,5 +147,6 @@ if __name__ == '__main__':
 		main(1.4, -.5)
 		print("fineto")
 	except KeyboardInterrupt:
+		motor_off()
 		HEDGE.stop()
 		sys.exit()
