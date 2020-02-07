@@ -47,6 +47,7 @@ class speed():
 		self.s=0.0
 	def set_motor(self, speed, motor):
 		current = int ((self.s))
+		print(current)
 		if(current < speed):	
 			current=current+5
 		elif (current > speed):
