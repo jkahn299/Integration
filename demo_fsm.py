@@ -45,7 +45,7 @@ class direction():
 class speed():
 	def __init__(self):
 		self.s=0.0
-	def set_motor(self, speed):
+	def set_motor(self, speed, motor):
 		current = int ((self.s))
 		while current != speed:
 			sign = (speed - current) / abs(speed - current)
@@ -83,8 +83,8 @@ s2=speed()
 def turn_left_90():
 	m1.change_direction("forward")
 	m2.change_direction("reverse")
-	s1.set_motor(25)
-	s2.set_motor(25)
+	s1.set_motor(25, p1)
+	s2.set_motor(25, p2)
 	time.sleep(RIGHT_ANGLE_TURN_SECS)
 	print("turn_left_90")
 
@@ -121,7 +121,8 @@ def main(X, Y):
 		elif speed > MAX_SPEED:
 			speed = MAX_SPEED
 		print("speed magnitude: {}".format(speed))
-		s1.set_motor(speed)
+		s1.set_motor(speed, p1)
+		s2.set_motor(speed, p2)
 		if X-.5 <= pos[1] <= X+.5 and Y-.5 <= pos[2] <= Y+.5:
 			motor_off()
 			time.sleep(1.5)
