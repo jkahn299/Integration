@@ -23,7 +23,7 @@ from time import sleep
 # p2=GPIO.PWM(PWM2, 1000)
 
 global DIR
-DIR = direction(motor)
+DIR = direction()
 global pos
 SPD = speed()
 
