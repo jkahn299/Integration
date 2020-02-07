@@ -47,10 +47,11 @@ class speed():
 		self.s=0.0
 	def set_motor(self, speed, motor):
 		current = int ((self.s))
-		while current != speed:
-			sign = (speed - current) / abs(speed - current)
-			motor.ChangeDutyCycle(current + (1 * sign))
-			sleep(0.01)
+		if(current < speed):	
+			current=current+5
+		elif (current > speed):
+			current=current-5
+
 	def get(self):
 		return float(self.s)
 
