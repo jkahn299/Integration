@@ -17,7 +17,7 @@ p2=GPIO.PWM(PWM2, 1000)
 
 class direction():
 	def __init__(self):
-		self.m=motor
+		motor=self.m
 	def change_direction(self, direction):
 		self.d=direction
 		if(self.m=="ONE"):
