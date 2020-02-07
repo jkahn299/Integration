@@ -101,7 +101,7 @@ def main(X, Y):
 	m_i = numpy.sqrt(xdiff*xdiff + ydiff*ydiff)
 	print(m_i)
 
-	while run:
+	while True:
 		pos = HEDGE.position()
 		old_state = state
 		x = pos[1]
