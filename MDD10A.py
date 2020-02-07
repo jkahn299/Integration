@@ -16,7 +16,7 @@ p2=GPIO.PWM(PWM2, 1000)
 
 
 class direction():
-	def __init__(self, motor):
+	def __init__(self):
 		self.m=motor
 	def change_direction(self, direction):
 		self.d=direction
@@ -33,7 +33,7 @@ class direction():
 
 class speed():
 	def __init__(self):
-		curentspeed=self.s
+		currentspeed=self.s
 		self.s=0.0
 	def up(self):
 		if self.s<100.0:
@@ -66,13 +66,12 @@ class speed():
 		self.set_right(speed)
 	def get(self):
 		return float(self.s)
-# m1=mo
-# tor("ONE")
-# m2=motor("TWO")
-# s1=speed()
-# s2=speed()
-# p1.start(0)
-# p2.start(0)
+m1=motor("ONE")
+m2=motor("TWO")
+s1=speed()
+s2=speed()
+p1.start(0)
+p2.start(0)
 # p1.ChangeDutyCycle(s1.get())
 # p2.ChangeDutyCycle(s2.get())
 # while (1):
