@@ -138,13 +138,13 @@ def main(X, Y):
 
 if __name__ == '__main__':
 	try:
-		main(5.7, -3.9)
+		main(5.7, 3.9)
 		print("broken")
-		main(8.9, -1.54)
+		main(8.9, 1.54)
 		print("broken2")
-		main(4.9, 2.95)
+		main(4.9, -2.95)
 		print("broken3")
-		main(1.4, -.5)
+		main(2, -.5)
 		print("fineto")
 	except KeyboardInterrupt:
 		motor_off()
