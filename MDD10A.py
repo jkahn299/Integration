@@ -15,7 +15,7 @@ p1=GPIO.PWM(PWM1, 1000)
 p2=GPIO.PWM(PWM2, 1000)
 
 
-class direction():
+class direction(motor):
 	def __init__(self, motor):
 		self.m=motor
 	def change_direction(self, direction):
