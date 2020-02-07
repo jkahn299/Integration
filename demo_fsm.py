@@ -46,12 +46,13 @@ class speed():
 	def __init__(self):
 		self.s=0.0
 	def set_motor(self, speed, motor):
-		current = int ((self.s))
-		print(current)
-		if(current < speed):	
-			current=current+5
-		elif (current > speed):
-			current=current-5
+		print(self.s)
+		if(self.s < speed):	
+			self.s=self.s+5
+			motor.ChangeDutyCycle(self.s)
+		elif (self.s > speed):
+			self.s=self.s-5
+			motor.ChangeDutyCycle(self.s)
 
 	def get(self):
 		return float(self.s)
@@ -119,7 +120,7 @@ def main(X, Y):
 		print("speed magnitude: {}".format(speed))
 		s1.set_motor(speed, p1)
 		s2.set_motor(speed, p2)
-		if X-.5 <= X <= X+.5 and Y-.5 <= Y <= Y+.5:
+		if X-.5 <= pos[1] <= X+.5 and Y-.5 <= pos[2] <= Y+.5:
 			motor_off()
 			time.sleep(1.5)
 			turn_left_90()
