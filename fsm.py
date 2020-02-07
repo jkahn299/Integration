@@ -9,18 +9,18 @@ from MDD10A import direction, speed
 import math
 import RPi.GPIO as GPIO
 from time import sleep
-GPIO.setmode(GPIO.BOARD)
-GPIO.setwarnings(False)
-PWM1=11
-PWM2=12
-DIR1=13
-DIR2=15
-GPIO.setup(PWM1,GPIO.OUT)
-GPIO.setup(PWM2,GPIO.OUT)
-GPIO.setup(DIR1,GPIO.OUT)
-GPIO.setup(DIR2,GPIO.OUT)
-p1=GPIO.PWM(PWM1, 1000)
-p2=GPIO.PWM(PWM2, 1000)
+# GPIO.setmode(GPIO.BOARD)
+# GPIO.setwarnings(False)
+# PWM1=11
+# PWM2=12
+# DIR1=13
+# DIR2=15
+# GPIO.setup(PWM1,GPIO.OUT)
+# GPIO.setup(PWM2,GPIO.OUT)
+# GPIO.setup(DIR1,GPIO.OUT)
+# GPIO.setup(DIR2,GPIO.OUT)
+# p1=GPIO.PWM(PWM1, 1000)
+# p2=GPIO.PWM(PWM2, 1000)
 
 global DIR
 DIR = direction()
