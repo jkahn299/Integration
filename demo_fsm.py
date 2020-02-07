@@ -90,12 +90,12 @@ def turn_left_90():
 	print("turn_left_90")
 
 
+HEDGE = MarvelmindHedge(tty= "/dev/ttyACM0", adr=10, debug=False)
+HEDGE.start()
 
-def main(X, Y):
+def main(X, Y, HEDGE):
 	run = True
 	state = None
-	HEDGE = MarvelmindHedge(tty= "/dev/ttyACM0", adr=10, debug=False)
-	HEDGE.start()
 	pos = HEDGE.position()
 	x = pos[1]
 	y = pos[2]
@@ -125,6 +125,7 @@ def main(X, Y):
 			time.sleep(1.5)
 			turn_left_90()
 			motor_off()
+			time.sleep(1.5)
 			break
 		
 		else:
@@ -136,17 +137,16 @@ def main(X, Y):
 		time.sleep(1)
 
 
-if __name__ == '__main__':
-	try:
-		main(5.7, -4.2)
-		print("broken")
-		main(8.5, -1.7)
-		print("broken2")
-		main(4.5, 2.5)
-		print("broken3")
-		main(2.3, .1)
-		print("fineto")
-	except KeyboardInterrupt:
-		motor_off()
-		HEDGE.stop()
-		sys.exit()
+try:
+	main(5.7, -4.2, HEDGE)
+	print("broken")
+	main(8.5, -1.7, HEDGE)
+	print("broken2")
+	main(4.5, 2.5, HEDGE)
+	print("broken3")
+	main(2.3, .1, HEDGE)
+	print("fineto")
+except KeyboardInterrupt:
+	motor_off()
+	HEDGE.stop()
+	sys.exit()
