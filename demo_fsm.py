@@ -44,7 +44,6 @@ class direction():
 
 class speed():
 	def __init__(self):
-		currentspeed=self.s
 		self.s=0.0
 	def set_motor(self, speed):
 		current = math.round(self.s)
