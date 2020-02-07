@@ -117,7 +117,7 @@ def main(X, Y):
 		print("speed magnitude: {}".format(speed))
 		s1.set_motor(speed, p1)
 		s2.set_motor(speed, p2)
-		if X-.5 <= pos[1] <= X+.5 and Y-.5 <= pos[2] <= Y+.5:
+		if X-.5 <= x <= X+.5 and Y-.5 <= y <= Y+.5:
 			motor_off()
 			time.sleep(1.5)
 			turn_left_90()
