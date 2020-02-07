@@ -116,10 +116,10 @@ def main(X, Y):
 		print(m_c)
 		print("Current position: ({}, {})".format(x, y))
 		speed = math.fabs((x * y) / (X_MAX * Y_MAX)) * 100
-		if speed < MIN_SPEED:
-			speed = MIN_SPEED
-		elif speed > MAX_SPEED:
-			speed = MAX_SPEED
+		# if speed < MIN_SPEED:
+		# 	speed = MIN_SPEED
+		# elif speed > MAX_SPEED:
+		# 	speed = MAX_SPEED
 		print("speed magnitude: {}".format(speed))
 		s1.set_motor(speed, p1)
 		s2.set_motor(speed, p2)
