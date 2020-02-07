@@ -46,7 +46,7 @@ class speed():
 	def __init__(self):
 		self.s=0.0
 	def set_motor(self, speed):
-		current = math.round(self.s)
+		current = int ((self.s))
 		while current != speed:
 			sign = (speed - current) / math.abs(speed - current)
 			motor.ChangeDutyCycle(current + (1 * sign))
