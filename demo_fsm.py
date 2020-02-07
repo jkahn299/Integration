@@ -66,8 +66,6 @@ STATE_BACK = 1
 STATE_RIGHT = 2
 STATE_FORWARD = 3
 
-X_MAX = 10.9
-Y_MAX = 5.8
 
 MIN_SPEED = 10
 MAX_SPEED = 100
@@ -115,11 +113,7 @@ def main(X, Y):
 		m_c = numpy.sqrt(xdiff*xdiff + ydiff*ydiff)
 		print(m_c)
 		print("Current position: ({}, {})".format(x, y))
-		speed = math.fabs((x * y) / (X_MAX * Y_MAX)) * 100
-		# if speed < MIN_SPEED:
-		# 	speed = MIN_SPEED
-		# elif speed > MAX_SPEED:
-		# 	speed = MAX_SPEED
+		speed = (m_c / m_i) *100
 		print("speed magnitude: {}".format(speed))
 		s1.set_motor(speed, p1)
 		s2.set_motor(speed, p2)
