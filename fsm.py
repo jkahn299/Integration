@@ -55,7 +55,7 @@ class Motor():
 
 
 
- def direction(direction):
+def direction(direction):
 	if(direction == "forward"):
 		m1.direction("forward")
 		m2.direction("forward")
@@ -118,7 +118,7 @@ class speed():
 
 
  # function to turn off motor
- def motor_off():
+def motor_off():
 	GPIO.output(DIR1,GPIO.LOW)
 	GPIO.output(DIR2,GPIO.LOW)
 	p1.ChangeDutyCycle(0)
