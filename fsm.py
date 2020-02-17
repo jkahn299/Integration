@@ -258,11 +258,11 @@ def main(X, Y, HEDGE):
 	ydiff=Y-y
 	m_i = numpy.sqrt(xdiff*xdiff + ydiff*ydiff)
 	print(m_i)
-	try:
-		Degrees = numpy.arctan(xdiff/ydiff) * 180 / numpy.pi 
+	# try:
+	# 	Degrees = numpy.arctan(xdiff/ydiff) * 180 / numpy.pi 
 
-	except ZeroDivisionError:
-		degrees = 0
+	# except ZeroDivisionError:
+	# 	degrees = 0
 
 	Print('press ctrl+c to quit')
 
