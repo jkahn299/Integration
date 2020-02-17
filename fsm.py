@@ -144,9 +144,17 @@ moveDone = False
 moveLeft = False
 moveRight = False
 
+pygame.init()
+pygame.joystick.init()
+joystick = pygame.joystick.Joystick(0)
+joystick.init()
+screen = pygame.display.set_mode([300,300])
+pygame.display.set_caption("JoyBorg - Press [ESC] to quit")
+
 def Handler(leftRight, upDown, speedfactor):
 	#print(upDown)
 	#print(leftRight)
+	global hadEvent
 	global newEvent1
 	global newEvent2
 	global moveUp
@@ -155,61 +163,72 @@ def Handler(leftRight, upDown, speedfactor):
 	global moveLeft
 	global moveRight
 
-	if axisUpDownInverted:
-		upDown = -upDown
-	if axisLeftRightInverted:
-		leftRight = -leftRight
-	if upDown < -0.1:
-		newEvent1 = True
-		moveUp = True
-		moveDown = False
-		s1.reValue(upDown, speedfactor)
-		s2.reValue(upDown, speedfactor)
-		p1.ChangeDutyCycle(s1.get())
-		p2.ChangeDutyCycle(s2.get())
-	elif upDown > 0.1:
-		newEvent1 = True
-		moveUp = False
-		moveDown = True
-		s1.reValue(upDown, speedfactor)
-		s2.reValue(upDown, speedfactor)
-		p1.ChangeDutyCycle(s1.get())
-		p2.ChangeDutyCycle(s2.get())
-	else:
-		if(-0.1 <= upDown <= 0.1):
-			s1.reValue(0, speedfactor)
-			s2.reValue(0, speedfactor)
-			p1.ChangeDutyCycle(s1.get())
-			p2.ChangeDutyCycle(s2.get())
-		moveUp = False
-		moveDown = False
-		MotorOff()
-	if leftRight < -0.1:
-		newEvent2 = True
-		moveLeft = True
-		moveRight = False
-		s1.reValue(leftRight, speedfactor)
-		s2.reValue(leftRight, speedfactor)
-		p1.ChangeDutyCycle(s1.get())
-		p2.ChangeDutyCycle(s2.get())
-	elif leftRight > 0.1:
-		newEvent2 = True
-		moveLeft = False
-		moveRight = True
-		s1.reValue(leftRight, speedfactor)
-		s2.reValue(leftRight, speedfactor)
-		p1.ChangeDutyCycle(s1.get())
-		p2.ChangeDutyCycle(s2.get())
-	else:
-		if(-0.1 <= leftRight <= 0.1):
-			s1.reValue(0, speedfactor)
-			s2.reValue(0, speedfactor)
-			p1.ChangeDutyCycle(s1.get())
-			p2.ChangeDutyCycle(s2.get())
-		moveLeft = False
-		moveRight = False
-		#newEvent2 = False
-		MotorOff()
+	for event in events:
+        if event.type == pygame.QUIT:
+            # User exit
+            hadEvent = True
+            moveQuit = True
+        elif event.type == pygame.JOYAXISMOTION:
+            # A joystick has been moved, read axis positions (-1 to +1)
+            hadEvent = True
+            upDown = joystick.get_axis(axisUpDown)
+            leftRight = joystick.get_axis(axisLeftRight)
+
+			if axisUpDownInverted:
+				upDown = -upDown
+			if axisLeftRightInverted:
+				leftRight = -leftRight
+			if upDown < -0.1:
+				newEvent1 = True
+				moveUp = True
+				moveDown = False
+				s1.reValue(upDown, speedfactor)
+				s2.reValue(upDown, speedfactor)
+				p1.ChangeDutyCycle(s1.get())
+				p2.ChangeDutyCycle(s2.get())
+			elif upDown > 0.1:
+				newEvent1 = True
+				moveUp = False
+				moveDown = True
+				s1.reValue(upDown, speedfactor)
+				s2.reValue(upDown, speedfactor)
+				p1.ChangeDutyCycle(s1.get())
+				p2.ChangeDutyCycle(s2.get())
+			else:
+				if(-0.1 <= upDown <= 0.1):
+					s1.reValue(0, speedfactor)
+					s2.reValue(0, speedfactor)
+					p1.ChangeDutyCycle(s1.get())
+					p2.ChangeDutyCycle(s2.get())
+				moveUp = False
+				moveDown = False
+				MotorOff()
+			if leftRight < -0.1:
+				newEvent2 = True
+				moveLeft = True
+				moveRight = False
+				s1.reValue(leftRight, speedfactor)
+				s2.reValue(leftRight, speedfactor)
+				p1.ChangeDutyCycle(s1.get())
+				p2.ChangeDutyCycle(s2.get())
+			elif leftRight > 0.1:
+				newEvent2 = True
+				moveLeft = False
+				moveRight = True
+				s1.reValue(leftRight, speedfactor)
+				s2.reValue(leftRight, speedfactor)
+				p1.ChangeDutyCycle(s1.get())
+				p2.ChangeDutyCycle(s2.get())
+			else:
+				if(-0.1 <= leftRight <= 0.1):
+					s1.reValue(0, speedfactor)
+					s2.reValue(0, speedfactor)
+					p1.ChangeDutyCycle(s1.get())
+					p2.ChangeDutyCycle(s2.get())
+				moveLeft = False
+				moveRight = False
+				#newEvent2 = False
+				MotorOff()
 
 
 #STATE_LEFT = 0
