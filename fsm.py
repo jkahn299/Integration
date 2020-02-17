@@ -171,7 +171,6 @@ def Handler(leftRight, upDown, speedfactor):
             hadEvent = True
             upDown = joystick.get_axis(axisUpDown)
             leftRight = joystick.get_axis(axisLeftRight)
-
 			if axisUpDownInverted:
 				upDown = -upDown
 			if axisLeftRightInverted:
