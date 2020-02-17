@@ -282,7 +282,7 @@ def main(X, Y):
 				m2.change_direction("forward")
 
 			Handler(newX, newY, speedfactor)
-				if newEvent1:
+			if newEvent1:
 					newEvent1 = False
 					if moveUp:
 						direction("forward")
@@ -290,7 +290,7 @@ def main(X, Y):
 						direction("reverse")
 					else:
 						MotorOff()
-				if newEvent2:
+			if newEvent2:
 					newEvent2 = False
 					if moveLeft:
 						direction("left")
@@ -299,7 +299,7 @@ def main(X, Y):
 					else:
 						MotorOff()
 
-				time.sleep(1)
+			time.sleep(1)
 		except KeyboardInterrupt:
 			print("interrupted")
 			MotorOff()
