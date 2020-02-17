@@ -9,7 +9,7 @@ import pygame
 
 # from MDD10A import direction, speed
 # import math
- import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 # from time import sleep
  GPIO.setmode(GPIO.BCM)
  GPIO.setwarnings(False)
