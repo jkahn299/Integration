@@ -162,9 +162,8 @@ def Handler(leftRight, upDown, speedfactor):
 	global moveDone
 	global moveLeft
 	global moveRight
-
 	for event in events:
-    	if event.type == pygame.QUIT:
+		if event.type == pygame.QUIT:
             # User exit
             hadEvent = True
             moveQuit = True
