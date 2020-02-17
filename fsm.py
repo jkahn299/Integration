@@ -146,7 +146,7 @@ moveRight = False
 
 pygame.init()
 pygame.joystick.init()
-joystick = pygame.joystick.Joystick(1)
+joystick = pygame.joystick.Joystick(0)
 joystick.init()
 screen = pygame.display.set_mode([300,300])
 pygame.display.set_caption("JoyBorg - Press [ESC] to quit")
