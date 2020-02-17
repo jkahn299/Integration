@@ -108,8 +108,8 @@ class speed():
 	def get(self):
 		return float(self.s)
 
-m1=motor("ONE")
-m2=motor("TWO")
+m1=Motor("ONE")
+m2=Motor("TWO")
 s1=speed()
 s2=speed()
 p1.start(0)
