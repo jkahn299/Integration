@@ -11,7 +11,7 @@ import pygame
 # import math
  import RPi.GPIO as GPIO
 # from time import sleep
- GPIO.setmode(GPIO.BOARD)
+ GPIO.setmode(GPIO.BCM)
  GPIO.setwarnings(False)
  PWM1=11
  PWM2=12
