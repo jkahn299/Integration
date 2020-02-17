@@ -264,7 +264,7 @@ def main(X, Y, HEDGE):
 	# except ZeroDivisionError:
 	# 	degrees = 0
 
-	Print('press ctrl+c to quit')
+	# Print('press ctrl+c to quit')
 
 	while run:
 		try:
@@ -323,6 +323,12 @@ def main(X, Y, HEDGE):
 			pwm2.stop()
 
 
+try:
+	main()
+except KeyboardInterrupt:
+	motor_off()
+	HEDGE.stop()
+ 	sys.exit()
 
 
 
