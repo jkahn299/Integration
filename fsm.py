@@ -324,7 +324,7 @@ def main(X, Y, HEDGE):
 
 
 try:
-	Handler()
+	Handler(leftRight, upDown, speedfactor)
 except KeyboardInterrupt:
 	motor_off()
 	HEDGE.stop()
