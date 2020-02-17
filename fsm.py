@@ -5,55 +5,159 @@ from marvelmind import MarvelmindHedge
 from time import sleep
 import sys
 import math
+import pygame
+
 # from MDD10A import direction, speed
 # import math
-# import RPi.GPIO as GPIO
+ import RPi.GPIO as GPIO
 # from time import sleep
-# GPIO.setmode(GPIO.BOARD)
-# GPIO.setwarnings(False)
-# PWM1=11
-# PWM2=12
-# DIR1=13
-# DIR2=15
-# GPIO.setup(PWM1,GPIO.OUT)
-# GPIO.setup(PWM2,GPIO.OUT)
-# GPIO.setup(DIR1,GPIO.OUT)
-# GPIO.setup(DIR2,GPIO.OUT)
-# p1=GPIO.PWM(PWM1, 1000)
-# p2=GPIO.PWM(PWM2, 1000)
+ GPIO.setmode(GPIO.BOARD)
+ GPIO.setwarnings(False)
+ PWM1=11
+ PWM2=12
+ DIR1=13
+ DIR2=15
+ GPIO.setup(PWM1,GPIO.OUT)
+ GPIO.setup(PWM2,GPIO.OUT)
+ GPIO.setup(DIR1,GPIO.OUT)
+ GPIO.setup(DIR2,GPIO.OUT)
+ p1=GPIO.PWM(PWM1, 1000)
+ p2=GPIO.PWM(PWM2, 1000)
+ p1.start(0)
+ p2.start(0)
+
+global pos
+
+
+
 
 # global DIR
 # DIR = direction()
-global pos
+
 # SPD = speed()
+
+
+class Motor():
+	def __init__(self, motor):
+		self.m = motor
+	def direction(self, direction):
+		self.d = direction
+		if(self.m == "ONE"):
+			if(self.d == "forward"):
+				GPIO.output(DIR1, GPIO.HIGH)
+			elif(self.d == "reverse"):
+				GPIO.output(DIR1, GPIO.LOW)
+		elif(self.m == "TWO"):
+			if(self.d == "forward"):
+				GPIO.output(DIR2, GPIO.HIGH)
+			elif(self.d == "reverse"):
+				GPIO.output(DIR2, GPIO.LOW)
+
+
+
+
+ def direction(direction):
+	if(direction == "forward"):
+		m1.direction("forward")
+		m2.direction("forward")
+		print("##### Direction #####")
+		print("Forward")
+		print("HIGH Motor1: ", s1.x)
+		print("LOW Motor2: ", s2.x)
+	elif(direction == "reverse"):
+		m1.direction("reverse")
+		m2.direction("reverse")
+		print("##### Direction #####")
+		print("Reverse")
+		print("LOW Motor1: ", s1.x)
+		print("HIGH Motor2: ", s2.x)
+	elif(direction == "left"):
+		m1.direction("forward")
+		m2.direction("Reverse")
+		print("##### Direction #####")
+		print("Left")
+		print("HIGH Motor1: ", s1.x)
+		print("LOW Motor2: ", s2.x)
+	elif(direction == "right"):
+		m1.direction("reverse")
+		m2.direction("forward")
+		print("##### Direction #####")
+		print("Right")
+		print("LOW Motor1: ", s1.x)
+		print("HIGH Motor2: ", s2.x)
+
+global newEvent1
+global newEvent2
+newEvent1 = False
+newEvent2 = False
+
+
+
+
+class speed():
+	def __init__(self):
+		self.s=0.0
+	def set_motor(self, speed, motor):
+		print(self.s)
+		if(self.s < speed):	
+			self.s=self.s+5
+			motor.ChangeDutyCycle(int(self.s))
+		elif (self.s > speed):
+			self.s=self.s-5
+			motor.ChangeDutyCycle(int(self.s))
+
+	def get(self):
+		return float(self.s)
+
+ m1=motor("ONE")
+ m2=motor("TWO")
+ s1=speed()
+ s2=speed()
+ p1.start(0)
+ p2.start(0)
+
+
+
+ # function to turn off motor
+ def motor_off():
+	GPIO.output(DIR1,GPIO.LOW)
+	GPIO.output(DIR2,GPIO.LOW)
+	p1.ChangeDutyCycle(0)
+	p2.ChangeDutyCycle(0)
+
+
+
+axisUpDownInverted = True ##Set true if u/d swapped
+axisLeftRightInverted = False
+pause = 0.1
+
+
+
+global moveUp
+global moveDown
+global moveDone
+global moveLeft
+global moveRight
+
+moveUp = False
+moveDown = False
+moveDone = False
+moveLeft = False
+moveRight = False
+
+
 
 STATE_LEFT = 0
 STATE_BACK = 1
 STATE_RIGHT = 2
 STATE_FORWARD = 3
 
-X_MAX = 10.9
-Y_MAX = 5.8
-
 MIN_SPEED = 10
 MAX_SPEED = 100
 
 RIGHT_ANGLE_TURN_SECS = 2
 
-# m1=motor("ONE")
-# m2=motor("TWO")
-# s1=speed()
-# s2=speed()
-# p1.start(0)
-# p2.start(0)
 
-def turn_left_90():
-	# m1.DIR.change_direction("forward")
-	# m2.DIR.change_direction("reverse")
-	# DIR.set_right(20)
-	time.sleep(RIGHT_ANGLE_TURN_SECS)
-	# DIR.set_both(0)
-	print("turn_left_90")
 
 
 
