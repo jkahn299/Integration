@@ -226,7 +226,7 @@ RIGHT_ANGLE_TURN_SECS = 2
 
 
 
-def main(X, Y):
+def main(X, Y, HEDGE):
 	global newEvent1
 	global newEvent2
 	newEvent1 = False
