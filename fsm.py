@@ -166,7 +166,7 @@ def Handler(leftRight, upDown, speedfactor):
 		if event.type == pygame.QUIT:
 			hadEvent = True
 			moveQuit = True
-        elif event.type == pygame.JOYAXISMOTION:
+		elif event.type == pygame.JOYAXISMOTION:
             # A joystick has been moved, read axis positions (-1 to +1)
             hadEvent = True
             upDown = joystick.get_axis(axisUpDown)
