@@ -11,20 +11,20 @@ import pygame
 # import math
 import RPi.GPIO as GPIO
 # from time import sleep
- GPIO.setmode(GPIO.BCM)
- GPIO.setwarnings(False)
- PWM1=11
- PWM2=12
- DIR1=13
- DIR2=15
- GPIO.setup(PWM1,GPIO.OUT)
- GPIO.setup(PWM2,GPIO.OUT)
- GPIO.setup(DIR1,GPIO.OUT)
- GPIO.setup(DIR2,GPIO.OUT)
- p1=GPIO.PWM(PWM1, 1000)
- p2=GPIO.PWM(PWM2, 1000)
- p1.start(0)
- p2.start(0)
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+PWM1=11
+PWM2=12
+DIR1=13
+DIR2=15
+GPIO.setup(PWM1,GPIO.OUT)
+GPIO.setup(PWM2,GPIO.OUT)
+GPIO.setup(DIR1,GPIO.OUT)
+GPIO.setup(DIR2,GPIO.OUT)
+p1=GPIO.PWM(PWM1, 1000)
+p2=GPIO.PWM(PWM2, 1000)
+p1.start(0)
+p2.start(0)
 
 global pos
 
