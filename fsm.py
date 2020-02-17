@@ -338,19 +338,19 @@ def main(X, Y, HEDGE):
 		# # 	break
 		# time.sleep(1)
 
-try:
-	main(5.7, -4.2, HEDGE)
-	print("broken")
-	main(8.5, -1.7, HEDGE)
-	print("broken2")
-	main(4.5, 2.5, HEDGE)
-	print("broken3")
-	main(2.3, .1, HEDGE)
-	print("fineto")
-except KeyboardInterrupt:
-	motor_off()
-	HEDGE.stop()
-	sys.exit()
+# try:
+# 	main(5.7, -4.2, HEDGE)
+# 	print("broken")
+# 	main(8.5, -1.7, HEDGE)
+# 	print("broken2")
+# 	main(4.5, 2.5, HEDGE)
+# 	print("broken3")
+# 	main(2.3, .1, HEDGE)
+# 	print("fineto")
+# except KeyboardInterrupt:
+# 	motor_off()
+# 	HEDGE.stop()
+# 	sys.exit()
 # if __name__ == '__main__':
 # 	try:
 # 		main(5.7, -3.9)
