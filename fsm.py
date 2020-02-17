@@ -297,7 +297,7 @@ def main(X, Y, HEDGE):
 			# 	m1.change_direction("forward")
 			# 	m2.change_direction("forward")
 
-			Handler(newX, newY, speedfactor)
+			Handler(X, Y, speedfactor)
 			if newEvent1:
 					newEvent1 = False
 					if moveUp:
@@ -324,7 +324,7 @@ def main(X, Y, HEDGE):
 
 
 try:
-	Handler(newX, newY, speedfactor)
+	Handler(X, Y, speedfactor)
 except KeyboardInterrupt:
 	motor_off()
 	HEDGE.stop()
