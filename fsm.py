@@ -34,7 +34,6 @@ global pos
 # global DIR
 # DIR = direction()
 
-# SPD = speed()
 
 
 class Motor():
@@ -145,14 +144,80 @@ moveDone = False
 moveLeft = False
 moveRight = False
 
+def Handler(leftRight, upDown, speedfactor):
+	#print(upDown)
+	#print(leftRight)
+	global newEvent1
+	global newEvent2
+	global moveUp
+	global moveDown
+	global moveDone
+	global moveLeft
+	global moveRight
+
+	if axisUpDownInverted:
+		upDown = -upDown
+	if axisLeftRightInverted:
+		leftRight = -leftRight
+	if upDown < -0.1:
+		newEvent1 = True
+		moveUp = True
+		moveDown = False
+		s1.reValue(upDown, speedfactor)
+		s2.reValue(upDown, speedfactor)
+		p1.ChangeDutyCycle(s1.get())
+		p2.ChangeDutyCycle(s2.get())
+	elif upDown > 0.1:
+		newEvent1 = True
+		moveUp = False
+		moveDown = True
+		s1.reValue(upDown, speedfactor)
+		s2.reValue(upDown, speedfactor)
+		p1.ChangeDutyCycle(s1.get())
+		p2.ChangeDutyCycle(s2.get())
+	else:
+		if(-0.1 <= upDown <= 0.1):
+			s1.reValue(0, speedfactor)
+			s2.reValue(0, speedfactor)
+			p1.ChangeDutyCycle(s1.get())
+			p2.ChangeDutyCycle(s2.get())
+		moveUp = False
+		moveDown = False
+		MotorOff()
+	if leftRight < -0.1:
+		newEvent2 = True
+		moveLeft = True
+		moveRight = False
+		s1.reValue(leftRight, speedfactor)
+		s2.reValue(leftRight, speedfactor)
+		p1.ChangeDutyCycle(s1.get())
+		p2.ChangeDutyCycle(s2.get())
+	elif leftRight > 0.1:
+		newEvent2 = True
+		moveLeft = False
+		moveRight = True
+		s1.reValue(leftRight, speedfactor)
+		s2.reValue(leftRight, speedfactor)
+		p1.ChangeDutyCycle(s1.get())
+		p2.ChangeDutyCycle(s2.get())
+	else:
+		if(-0.1 <= leftRight <= 0.1):
+			s1.reValue(0, speedfactor)
+			s2.reValue(0, speedfactor)
+			p1.ChangeDutyCycle(s1.get())
+			p2.ChangeDutyCycle(s2.get())
+		moveLeft = False
+		moveRight = False
+		#newEvent2 = False
+		MotorOff()
 
 
-STATE_LEFT = 0
-STATE_BACK = 1
-STATE_RIGHT = 2
-STATE_FORWARD = 3
+#STATE_LEFT = 0
+#STATE_BACK = 1
+#STATE_RIGHT = 2
+#STATE_FORWARD = 3
 
-MIN_SPEED = 10
+#MIN_SPEED = 10
 MAX_SPEED = 100
 
 RIGHT_ANGLE_TURN_SECS = 2
@@ -162,6 +227,10 @@ RIGHT_ANGLE_TURN_SECS = 2
 
 
 def main(X, Y):
+	global newEvent1
+	global newEvent2
+	newEvent1 = False
+	newEvent2 = False
 	run = True
 	state = None
 	HEDGE = MarvelmindHedge(tty= "/dev/ttyACM0", adr=10, debug=False)
@@ -173,63 +242,125 @@ def main(X, Y):
 	ydiff=Y-y
 	m_i = numpy.sqrt(xdiff*xdiff + ydiff*ydiff)
 	print(m_i)
+	try:
+		Degrees = numpy.arctan(xdiff/ydiff) * 180 / numpy.pi 
+
+	except ZeroDivisionError:
+		degrees = 0
+
+	Print('press ctrl+c to quit')
 
 	while run:
-		pos = HEDGE.position()
-		old_state = state
-		x = pos[1]
-		y = pos[2]
-		print(x)
-		print(y)
-		xdiff=X-x
-		ydiff=Y-y
-		m_c = numpy.sqrt(xdiff*xdiff + ydiff*ydiff)
-		print(m_c)
-		print("Current position: ({}, {})".format(x, y))
-		speed = math.fabs((x * y) / (X_MAX * Y_MAX)) * 100
-		if speed < MIN_SPEED:
-			speed = MIN_SPEED
-		elif speed > MAX_SPEED:
-			speed = MAX_SPEED
-		print("speed magnitude: {}".format(speed))
-		# SPD.set_both(speed)
-		if X-.5 <= pos[1] <= X+.5 and Y-.5 <= pos[2] <= Y+.5:
-			state = STATE_LEFT
-			turn_left_90()
-			#print("turn_left_90")
-			break
-		# elif x < 0 and y > 0:
-		# 	state = STATE_BACK
-		# 	print("STATE_BACK")
-		# elif x < 0 and y < 0:
-		# 	state = STATE_RIGHT
-		# 	print("STATE_RIGHT")
-		else:
-			state = STATE_FORWARD
-			# m1.DIR.change_direction("forward")
-			# m2.DIR.change_direction("forward")
-			# s1.set_both
-			print("STATE_FORWARD")
-			# run = False # End loop after driving
-		# if state != old_state:
+		try:
+			pos = HEDGE.position()
+			old_state = state
+			x = pos[1]
+			y = pos[2]
+			print(x)
+			print(y)
+			xdiff=X-x
+			ydiff=Y-y
+			m_c = numpy.sqrt(xdiff*xdiff + ydiff*ydiff)
+			print(m_c)
+			print("Current position: ({}, {})".format(x, y))
+
+			speed = (m_c / m_i) *100
+			print("speed magnitude: {}".format(speed))
+			s1.set_motor(speed, p1)
+			s2.set_motor(speed, p2)
+			if X-.5 <= pos[1] <= X+.5 and Y-.5 <= pos[2] <= Y+.5:
+				motor_off()
+				time.sleep(1.5)
+				turn_left_90()
+				motor_off()
+				time.sleep(1.5)
+				break
+		
+			else:
+				print("STATE_FORWARD")
+				m1.change_direction("forward")
+				m2.change_direction("forward")
+
+			Handler(newX, newY, speedfactor)
+				if newEvent1:
+					newEvent1 = False
+					if moveUp:
+						direction("forward")
+					elif moveDown:
+						direction("reverse")
+					else:
+						MotorOff()
+				if newEvent2:
+					newEvent2 = False
+					if moveLeft:
+						direction("left")
+					elif moveRight:
+						direction("right")
+					else:
+						MotorOff()
+
+				time.sleep(1)
+		except KeyboardInterrupt:
+			print("interrupted")
+			MotorOff()
+			pwm1.stop()
+			pwm2.stop()
+		# speed = math.fabs((x * y) / (X_MAX * Y_MAX)) * 100
+		# if speed < MIN_SPEED:
+		# 	speed = MIN_SPEED
+		# elif speed > MAX_SPEED:
+		# 	speed = MAX_SPEED
+		# print("speed magnitude: {}".format(speed))
+		# # SPD.set_both(speed)
+		# if X-.5 <= pos[1] <= X+.5 and Y-.5 <= pos[2] <= Y+.5:
+		# 	state = STATE_LEFT
 		# 	turn_left_90()
-		# if state = done:
-		# 	print("here")
-		# 	print("Left")
+		# 	#print("turn_left_90")
 		# 	break
-		time.sleep(1)
+		# # elif x < 0 and y > 0:
+		# # 	state = STATE_BACK
+		# # 	print("STATE_BACK")
+		# # elif x < 0 and y < 0:
+		# # 	state = STATE_RIGHT
+		# # 	print("STATE_RIGHT")
+		# else:
+		# 	state = STATE_FORWARD
+		# 	# m1.DIR.change_direction("forward")
+		# 	# m2.DIR.change_direction("forward")
+		# 	# s1.set_both
+		# 	print("STATE_FORWARD")
+		# 	# run = False # End loop after driving
+		# # if state != old_state:
+		# # 	turn_left_90()
+		# # if state = done:
+		# # 	print("here")
+		# # 	print("Left")
+		# # 	break
+		# time.sleep(1)
 
-
-if __name__ == '__main__':
-	try:
-		main(5.7, -3.9)
-		print("broken")
-		main(8.9, -1.54)
-		print("broken2")
-		main(4.9, 2.95)
-		print("broken3")
-		main(1.4, -.5)
-		print("fineto")
-	except KeyboardInterrupt:
-		HEDGE.stop()
-		sys.exit()
+try:
+	main(5.7, -4.2, HEDGE)
+	print("broken")
+	main(8.5, -1.7, HEDGE)
+	print("broken2")
+	main(4.5, 2.5, HEDGE)
+	print("broken3")
+	main(2.3, .1, HEDGE)
+	print("fineto")
+except KeyboardInterrupt:
+	motor_off()
+	HEDGE.stop()
+	sys.exit()
+# if __name__ == '__main__':
+# 	try:
+# 		main(5.7, -3.9)
+# 		print("broken")
+# 		main(8.9, -1.54)
+# 		print("broken2")
+# 		main(4.9, 2.95)
+# 		print("broken3")
+# 		main(1.4, -.5)
+# 		print("fineto")
+# 	except KeyboardInterrupt:
+# 		HEDGE.stop()
+# 		sys.exit()
