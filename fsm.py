@@ -164,7 +164,7 @@ def Handler(leftRight, upDown, speedfactor):
 	global moveRight
 
 	for event in events:
-        if event.type == pygame.QUIT:
+    	if event.type == pygame.QUIT:
             # User exit
             hadEvent = True
             moveQuit = True
@@ -324,6 +324,11 @@ def main(X, Y, HEDGE):
 			MotorOff()
 			pwm1.stop()
 			pwm2.stop()
+
+
+
+
+
 		# speed = math.fabs((x * y) / (X_MAX * Y_MAX)) * 100
 		# if speed < MIN_SPEED:
 		# 	speed = MIN_SPEED
