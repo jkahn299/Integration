@@ -69,8 +69,8 @@ RIGHT_ANGLE_TURN_SECS = 5
 
 m1=direction("ONE")
 m2=direction("TWO")
-s1=speed(0)
-s2=speed(0)
+s1=speed()
+s2=speed()
 
 
 def turn_left_90():
