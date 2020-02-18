@@ -1,5 +1,4 @@
 import manual_auto_demo
-import demo_fsm
 
 
 print("MANUAL OR AUTO (M/A)")
@@ -10,5 +9,5 @@ if q == M:
 	manual_auto_demo.manual()
 
 if q == A:
-	demo_fsm.main()
+	manual_auto_demoma.main()
 	
