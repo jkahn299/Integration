@@ -164,34 +164,30 @@ def Handler(p1, p2, events):
 def manual():
 	try:
 		print 'Press [ESC] to quit'
-    # Loop indefinitely
-	    while True:
-	        # Get the currently pressed keys on the keyboard
-	        Handler(pygame.event.get())
-	        if hadEvent:
-	            # Keys have changed, generate the command list based on keys
-	            hadEvent = False
-	            if moveQuit:
-	                break
-	            elif moveLeft:
-	                m1.change_direction("forward")
-	                m2.change_direction("reverse")
-	            elif moveRight:
-	                m1.change_direction("reverse")
-	                m2.change_direction("forward")
-	            elif moveUp:
-	                m1.change_direction("forward")
-	                m2.change_direction("forward")
-	            elif moveDown:
-	            	m1.change_direction("reverse")
-	                m2.change_direction("reverse")
-	            else:
-	                motor_off()
-	        		time.sleep(interval)
-    
-    MotorOff()
+		while True:
+			Handler(pygame.event.get())
+			if hadEvent:
+				hadEvent = False
+				if moveQuit:
+					break
+				elif moveLeft:
+					m1.change_direction("forward")
+					m2.change_direction("reverse")
+				elif moveRight:
+					m1.change_direction("reverse")
+					m2.change_direction("forward")
+				elif moveUp:
+					m1.change_direction("forward")
+					m2.change_direction("forward")
+				elif moveDown:
+					m1.change_direction("reverse")
+					m2.change_direction("reverse")
+				else:
+					motor_off()
+					time.sleep(interval)
+	MotorOff()
+
 except KeyboardInterrupt:
-    # CTRL+C exit, disable all drives
-    MotorOff()
+	MotorOff()
 
     
