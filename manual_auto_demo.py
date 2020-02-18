@@ -167,6 +167,7 @@ def manual():
 	try:
 		print 'Press [ESC] to quit'
 		while 1:
+			hadEvent = False
 			Handler(p1, p2, pygame.event.get())
 			if hadEvent:
 				hadEvent = False
