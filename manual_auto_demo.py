@@ -144,7 +144,7 @@ def Handler(p1, p2, events):
 					s2.set_motor(0, p2)
 					moveUp = False
 					moveDown = False
-					MotorOff()
+					motor_off()
 			if leftRight < -0.1:
 				newEvent2 = True
 				moveLeft = True
@@ -163,7 +163,7 @@ def Handler(p1, p2, events):
 					s2.set_motor(0, p2)
 					moveLeft = False
 					moveRight = False
-					MotorOff()
+					motor_off()
 
 def manual():
 	try:
@@ -190,9 +190,9 @@ def manual():
 				else:
 					motor_off()
 					time.sleep(interval)
-					MotorOff()
+					motor_off()
 	except KeyboardInterrupt:
-		MotorOff()
+		motor_off()
 
 HEDGE = MarvelmindHedge(tty= "/dev/ttyACM0", adr=10, debug=False)
 HEDGE.start()
