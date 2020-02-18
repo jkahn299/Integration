@@ -155,11 +155,11 @@ def Handler(p1, p2, events):
 				s2.set_motor(leftRight, p2)
 			else:
 				if(-0.1 <= leftRight <= 0.1):
-				s1.set_motor(0, p1)
-				s2.set_motor(0, p2)
-				moveLeft = False
-				moveRight = False
-				MotorOff()
+					s1.set_motor(0, p1)
+					s2.set_motor(0, p2)
+					moveLeft = False
+					moveRight = False
+					MotorOff()
 
 def manual():
 	try:
