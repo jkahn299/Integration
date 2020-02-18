@@ -163,7 +163,7 @@ def Handler(p1, p2, events):
 
 def manual():
 	try:
-    print 'Press [ESC] to quit'
+    	print 'Press [ESC] to quit'
     # Loop indefinitely
     while True:
         # Get the currently pressed keys on the keyboard
