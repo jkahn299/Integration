@@ -95,12 +95,14 @@ global moveDown
 global moveDone
 global moveLeft
 global moveRight
+global hadEvent
 
 moveUp = False
 moveDown = False
 moveDone = False
 moveLeft = False
 moveRight = False
+hadEvent = False
 
 
 pygame.init()
