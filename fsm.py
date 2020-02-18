@@ -31,10 +31,6 @@ global pos
 
 
 
-# global DIR
-# DIR = direction()
-
-
 
 class Motor():
 	def __init__(self, motor):
@@ -144,14 +140,14 @@ moveDone = False
 moveLeft = False
 moveRight = False
 
+
 pygame.init()
 pygame.joystick.init()
 joystick = pygame.joystick.Joystick(0)
 joystick.init()
-screen = pygame.display.set_mode([300,300])
 pygame.display.set_caption("JoyBorg - Press [ESC] to quit")
 
-def Handler(leftRight, upDown, speedfactor):
+def Handler(leftRight, upDown, p1, p2):
 	#print(upDown)
 	#print(leftRight)
 	global hadEvent
@@ -179,24 +175,18 @@ def Handler(leftRight, upDown, speedfactor):
 				newEvent1 = True
 				moveUp = True
 				moveDown = False
-				s1.reValue(upDown, speedfactor)
-				s2.reValue(upDown, speedfactor)
-				p1.ChangeDutyCycle(s1.get())
-				p2.ChangeDutyCycle(s2.get())
+				s1.set_motor(upDown, p1)
+				s2.set_motor(upDown, p2)
 			elif upDown > 0.1:
 				newEvent1 = True
 				moveUp = False
 				moveDown = True
-				s1.reValue(upDown, speedfactor)
-				s2.reValue(upDown, speedfactor)
-				p1.ChangeDutyCycle(s1.get())
-				p2.ChangeDutyCycle(s2.get())
+				s1.set_motor(upDown, p1)
+				s2.set_motor(upDown, p2)
 			else:
 				if(-0.1 <= upDown <= 0.1):
-					s1.reValue(0, speedfactor)
-					s2.reValue(0, speedfactor)
-					p1.ChangeDutyCycle(s1.get())
-					p2.ChangeDutyCycle(s2.get())
+					s1.set_motor(0, p1)
+					s2.set_motor(0, p2)
 				moveUp = False
 				moveDown = False
 				MotorOff()
@@ -284,18 +274,7 @@ def main(X, Y, HEDGE):
 			print("speed magnitude: {}".format(speed))
 			s1.set_motor(speed, p1)
 			s2.set_motor(speed, p2)
-			# if X-.5 <= pos[1] <= X+.5 and Y-.5 <= pos[2] <= Y+.5:
-			# 	motor_off()
-			# 	time.sleep(1.5)
-			# 	turn_left_90()
-			# 	motor_off()
-			# 	time.sleep(1.5)
-			# 	break
-		
-			# else:
-			# 	print("STATE_FORWARD")
-			# 	m1.change_direction("forward")
-			# 	m2.change_direction("forward")
+
 
 			Handler(xdiff, ydiff, speedfactor)
 			if newEvent1:

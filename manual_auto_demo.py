@@ -126,14 +126,14 @@ def Handler(p1, p2, events):
 				newEvent1 = True
 				moveUp = True
 				moveDown = False
-				s1.reValue(upDown, p1)
-				s2.reValue(upDown, p2)
+				s1.set_motor(upDown, p1)
+				s2.set_motor(upDown, p2)
 			elif upDown > 0.1:
 				newEvent1 = True
 				moveUp = False
 				moveDown = True
-				s1.reValue(upDown, p1)
-				s2.reValue(upDown, p2)
+				s1.set_motor(upDown, p1)
+				s2.set_motor(upDown, p2)
 			else:
 				if(-0.1 <= upDown <= 0.1):
 					s1.set_motor(0, p1)
@@ -193,3 +193,5 @@ def manual():
 except KeyboardInterrupt:
     # CTRL+C exit, disable all drives
     MotorOff()
+
+    
