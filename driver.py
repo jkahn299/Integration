@@ -3,7 +3,7 @@ import manual_auto_demo
 
 print("MANUAL OR AUTO (M/A)")
 
-raw_input = 'q' 
+q = raw_input() 
 
 if q == 'M': 
 	manual_auto_demo.manual()
