@@ -189,4 +189,54 @@ def manual():
 	except KeyboardInterrupt:
 		MotorOff()
 
-    
+HEDGE = MarvelmindHedge(tty= "/dev/ttyACM0", adr=10, debug=False)
+HEDGE.start()
+
+def main(X, Y, HEDGE):
+	run = True
+	state = None
+	pos = HEDGE.position()
+	x = pos[1]
+	y = pos[2]
+	xdiff=X-x
+	ydiff=Y-y
+	m_i = numpy.sqrt(xdiff*xdiff + ydiff*ydiff)
+	print(m_i)
+
+	while True:
+		pos = HEDGE.position()
+		old_state = state
+		x = pos[1]
+		y = pos[2]
+		print(x)
+		print(y)
+		xdiff=X-x
+		ydiff=Y-y
+		m_c = numpy.sqrt(xdiff*xdiff + ydiff*ydiff)
+		print(m_c)
+		print("Current position: ({}, {})".format(x, y))
+		speed = (m_c / m_i) *100
+		print("speed magnitude: {}".format(speed))
+		s1.set_motor(speed, p1)
+		s2.set_motor(speed, p2)
+		if X-.5 <= pos[1] <= X+.5 and Y-.5 <= pos[2] <= Y+.5:
+			motor_off()
+			time.sleep(1.5)
+			turn_left_90()
+			motor_off()
+			time.sleep(1.5)
+			break
+		
+		else:
+			print("STATE_FORWARD")
+			m1.change_direction("forward")
+			m2.change_direction("forward")
+			
+
+		time.sleep(1)
+try:
+	manual()
+except KeyboardInterrupt:
+	motor_off()
+	HEDGE.stop()
+	sys.exit()
