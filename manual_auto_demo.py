@@ -116,9 +116,9 @@ def Handler(p1, p2, events):
 			moveQuit = True
 		elif event.type == pygame.JOYAXISMOTION:
 			hadEvent = True
-        	upDown = joystick.get_axis(axisUpDown)
-        	leftRight = joystick.get_axis(axisLeftRight)
-        	if axisUpDownInverted:
+			upDown = joystick.get_axis(axisUpDown)
+			leftRight = joystick.get_axis(axisLeftRight)
+			if axisUpDownInverted:
 				upDown = -upDown
 			if axisLeftRightInverted:
 				leftRight = -leftRight
