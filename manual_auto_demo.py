@@ -102,7 +102,7 @@ moveDown = False
 moveDone = False
 moveLeft = False
 moveRight = False
-hadEvent = False
+
 
 
 pygame.init()
