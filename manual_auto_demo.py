@@ -186,7 +186,7 @@ def manual():
 					motor_off()
 					time.sleep(interval)
 					MotorOff()
-				except KeyboardInterrupt:
-					MotorOff()
+	except KeyboardInterrupt:
+		MotorOff()
 
     
