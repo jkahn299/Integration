@@ -47,10 +47,10 @@ class speed():
 		print(self.s)
 		if(self.s < speed):	
 			self.s=self.s+5
-			motor.ChangeDutyCycle(int(self.s))
+			motor.ChangeDutyCycle(self.s)
 		elif (self.s > speed):
 			self.s=self.s-5
-			motor.ChangeDutyCycle(int(self.s))
+			motor.ChangeDutyCycle(self.s)
 
 	def get(self):
 		return float(self.s)
