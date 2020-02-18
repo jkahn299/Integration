@@ -86,7 +86,9 @@ global newEvent2
 newEvent1 = False
 newEvent2 = False
 
-axisUpDownInverted = True
+axisUpDown=1
+axisLeftRight=3
+axisUpDownInverted = False
 axisLeftRightInverted = False
 pause = 0.1
 
