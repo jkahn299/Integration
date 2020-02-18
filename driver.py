@@ -9,6 +9,6 @@ raw_input = q
 if q == M: 
 	manual_auto_demo.manual()
 
-if q == A;
+if q == A:
 	demo_fsm.main()
 	
