@@ -49,7 +49,7 @@ class speed():
 			self.s=self.s+5
 			motor.ChangeDutyCycle(self.s)
 		elif (self.s > speed):
-			self.s=self.s-
+			self.s=self.s-5
 			print('New speed: {}'.format(self.s))
 			motor.ChangeDutyCycle(self.s)
 
