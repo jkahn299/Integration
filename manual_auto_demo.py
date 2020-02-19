@@ -49,7 +49,8 @@ class speed():
 			self.s=self.s+5
 			motor.ChangeDutyCycle(self.s)
 		elif (self.s > speed):
-			self.s=self.s-5
+			self.s=self.s-
+			print('New speed: {}'.format(self.s))
 			motor.ChangeDutyCycle(self.s)
 
 	def get(self):
@@ -113,7 +114,7 @@ joystick = pygame.joystick.Joystick(0)
 joystick.init()
 pygame.display.set_caption("JoyBorg - Press [ESC] to quit")
 
-def Handler(p1, p2, events):
+def handler(p1, p2, events):
 	for event in events:
 		if event.type == pygame.QUIT:
 			hadEvent = True
@@ -170,7 +171,7 @@ def manual():
 		print 'Press [ESC] to quit'
 		while 1:
 			hadEvent = False
-			Handler(p1, p2, pygame.event.get())
+			handler(p1, p2, pygame.event.get())
 			if hadEvent:
 				hadEvent = False
 				if moveQuit:
