@@ -109,6 +109,9 @@ class MarvelmindHedge (Thread):
 
     def position(self):
         return list(self.valuesUltrasoundPosition)[-1];
+
+    def position_list(self):
+        return list(self.valuesUltrasoundPosition);
            
     def print_distances(self): 
 		self.distancesUpdated= False
