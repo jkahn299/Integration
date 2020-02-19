@@ -130,8 +130,9 @@ def henrys_handler(events):
             m1.change_direction("forward" if left_motor_forward else "reverse")
             m2.change_direction("forward" if right_motor_forward else "reverse")
             print("left_motor_speed: {}".format(left_motor_speed))
-            print("right_motor_speed: {}".format(right_motor_speed)
+            print("right_motor_speed: {}".format(right_motor_speed))
             print("left_motor_direction: {}".format(left_motor_forward))
+            print("right_motor_direction: {}".format(right_motor_forward))
 
 
 def manual():
