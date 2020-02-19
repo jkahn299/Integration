@@ -87,8 +87,8 @@ s2 = speed()
 
 
 def turn_left_90():
-    m1.change_direction("forward")
-    m2.change_direction("reverse")
+    m1.change_direction("reverse")
+    m2.change_direction("forward")
     s1.set_motor(25, p1)
     s2.set_motor(25, p2)
     time.sleep(RIGHT_ANGLE_TURN_SECS)
