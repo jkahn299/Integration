@@ -90,6 +90,8 @@ def turn_left_90():
     print("turn_left_90")
 
 
+
+
 global newEvent1
 global newEvent2
 newEvent1 = False
@@ -108,11 +110,11 @@ joystick.init()
 pygame.display.set_caption("JoyBorg - Press [ESC] to quit")
 
 left_y_axis = 1
-right_y_axis = 4
+right_y_axis = 3
 joystick_deadzone = 0.15
 
 
-def jesses_handler(events):
+def jesses_handler():
     for event in events:
         if event.type == JOYSTICKAXISMOTION:
             left_motor_speed = joystick.get_axis(left_y_axis)
@@ -139,7 +141,7 @@ def manual():
     try:
         print('Press [ESC] to quit')
         while 1:
-            jesses_handler(events)
+            jesses_handler()
     except KeyboardInterrupt:
         motor_off()
 
