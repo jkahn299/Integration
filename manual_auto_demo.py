@@ -161,7 +161,6 @@ def main(X, Y, HEDGE):
 
     while True:
         pos = HEDGE.position()
-        old_state = state
         x = pos[1]
         y = pos[2]
         print(x)
