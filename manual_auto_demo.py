@@ -202,10 +202,12 @@ def main():
     pygame.init()
     pygame.joystick.init()
     pygame.display.init()
+    pygame.display.set_mode((100, 100))
     auton=False
     global joystick
     global auton_init
     while 1:
+        pygame.event.pump()
         pressed = pygame.key.get_pressed()
         a_held = pressed[pygame.K_a]
         m_held = pressed[pygame.K_m]
@@ -219,7 +221,6 @@ def main():
             automatic(0,0,HEDGE)
         else:
             manual()
-        pygame.event.pump()
 
 try:
     main()
