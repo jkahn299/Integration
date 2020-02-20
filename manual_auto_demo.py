@@ -145,10 +145,6 @@ def manual():
     global joystick
     if manual_init:
         manual_init = False
-        global joystick
-        pygame.init()
-        pygame.joystick.init()
-        pygame.display.init()
         joystick = pygame.joystick.Joystick(0)
         joystick.init()
     try:
@@ -203,6 +199,9 @@ def automatic(X, Y, HEDGE):
     time.sleep(1)
 
 def main():
+    pygame.init()
+    pygame.joystick.init()
+    pygame.display.init()
     auton=False
     global joystick
     global auton_init
