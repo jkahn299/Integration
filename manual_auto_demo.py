@@ -119,14 +119,14 @@ def jesses_handler(events):
         if event.type == JOYSTICKAXISMOTION:
             left_motor_speed = joystick.get_axis(left_y_axis)
             right_motor_speed = joystick.get_axis(right_y_axis)
-            if math.abs(left_motor_speed) <= joystick_deadzone:
+            if math.fabs(left_motor_speed) <= joystick_deadzone:
                 left_motor_speed = 0
-            if math.abs(right_motor_speed) <= joystick_deadzone:
+            if math.fabs(right_motor_speed) <= joystick_deadzone:
                 right_motor_speed = 0
             left_motor_forward = left_motor_speed > 0
             right_motor_forward = right_motor_speed > 0
-            left_motor_speed = math.abs(left_motor_speed) * 100
-            right_motor_speed = math.abs(right_motor_speed) * 100
+            left_motor_speed = math.fabs(left_motor_speed) * 100
+            right_motor_speed = math.fabs(right_motor_speed) * 100
             s1.set_motor(left_motor_speed, m1)
             s2.set_motor(right_motor_speed, m2)
             m1.change_direction("forward" if left_motor_forward else "reverse")
