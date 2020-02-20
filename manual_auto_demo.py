@@ -210,8 +210,10 @@ def main():
         a_held = pressed[pygame.K_a]
         m_held = pressed[pygame.K_m]
         if a_held:
+            raw_input("Press enter to continue switching to auton")
             auton=True
         elif m_held:
+            raw_input("Press enter to continue switching to manual")
             auton=False
         if auton:
             automatic(0,0,HEDGE)
