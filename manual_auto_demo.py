@@ -219,6 +219,7 @@ def main():
             automatic(0,0,HEDGE)
         else:
             manual()
+        pygame.event.pump()
 
 try:
     main()
