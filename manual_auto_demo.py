@@ -4,6 +4,8 @@ import time
 import RPi.GPIO as GPIO
 import numpy
 import pygame
+import pygame.joystick
+import pygame.display
 import math
 from marvelmind import MarvelmindHedge
 
@@ -138,8 +140,8 @@ def jesses_handler(events):
 
 def manual():
     pygame.init()
-    pygame.display.init()
     pygame.joystick.init()
+    pygame.display.init()
     joystick = pygame.joystick.Joystick(0)
     joystick.init()
     pygame.display.set_caption("JoyBorg - Press [ESC] to quit")
