@@ -79,7 +79,7 @@ def motor_off():
 MIN_SPEED = 10
 MAX_SPEED = 100
 
-RIGHT_ANGLE_TURN_SECS = 3
+RIGHT_ANGLE_TURN_SECS = 3.5
 
 m1 = direction("ONE")
 m2 = direction("TWO")
