@@ -51,6 +51,10 @@ class speed():
 
     def set_motor(self, speed, motor):
         print(self.s)
+        if speed < 0:
+            speed = 0
+        elif speed > 100:
+            speed = 100
         if (self.s < speed):
             self.s = self.s + 5
             motor.ChangeDutyCycle(self.s)
