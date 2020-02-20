@@ -128,8 +128,8 @@ def jesses_handler(events, joystick):
             right_motor_forward = right_motor_speed > 0
             left_motor_speed = math.fabs(left_motor_speed) * 100
             right_motor_speed = math.fabs(right_motor_speed) * 100
-            s1.set_motor(left_motor_speed, m1)
-            s2.set_motor(right_motor_speed, m2)
+            s1.set_motor(left_motor_speed, p1)
+            s2.set_motor(right_motor_speed, p2)
             m1.change_direction("forward" if left_motor_forward else "reverse")
             m2.change_direction("forward" if right_motor_forward else "reverse")
             print("left_motor_speed: {}".format(left_motor_speed))
