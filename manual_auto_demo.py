@@ -112,7 +112,7 @@ pygame.display.set_caption("JoyBorg - Press [ESC] to quit")
 left_y_axis = 1
 right_y_axis = 3
 joystick_deadzone = 0.15
-
+events = pygame.event.get
 
 def jesses_handler(events):
     for event in events:
