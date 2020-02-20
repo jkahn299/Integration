@@ -138,6 +138,7 @@ def jesses_handler(events):
 
 def manual():
     pygame.init()
+    pygame.display.init()
     pygame.joystick.init()
     joystick = pygame.joystick.Joystick(0)
     joystick.init()
