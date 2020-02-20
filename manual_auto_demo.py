@@ -206,6 +206,7 @@ def main():
     global auton_init
     while 1:
         if joystick.get_button(6): # L1
+            print(auton)
             auton=not auton
             if not auton:
                 auton_init=True
