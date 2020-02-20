@@ -110,7 +110,7 @@ pause = 0.1
 # joystick.init()
 # pygame.display.set_caption("JoyBorg - Press [ESC] to quit")
 
-left_y_axis = 1
+left_y_axis = -1
 right_y_axis = 3
 joystick_deadzone = 0.15
 events = pygame.event.get
