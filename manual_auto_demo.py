@@ -205,19 +205,20 @@ def main():
     global joystick
     global auton_init
     while 1:
-        pygame.event.pump()
-        if joystick.get_button(6): # L1
-            print(auton)
-            auton=not auton
-            if not auton:
-                auton_init=True
+        pressed = pygame.key.get_pressed()
+        a_held = pressed[pygame.K_a]
+        m_held = pressed[pygame.K_m]
+        if a_held:
+            auton=True
+        elif m_held:
+            auton=False
         if auton:
             automatic(0,0,HEDGE)
         else:
             manual()
 
 try:
-    manual()
+    main()
 except KeyboardInterrupt:
     motor_off()
     HEDGE.stop()
