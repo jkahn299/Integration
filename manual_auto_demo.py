@@ -4,7 +4,7 @@ import time
 import RPi.GPIO as GPIO
 import numpy
 import pygame
-
+import math
 from marvelmind import MarvelmindHedge
 
 GPIO.setmode(GPIO.BOARD)
@@ -23,7 +23,6 @@ p1.start(0)
 p2.start(0)
 
 global pos
-
 
 class direction():
     def __init__(self, motor):
@@ -116,7 +115,7 @@ events = pygame.event.get
 
 def jesses_handler(events):
     for event in events:
-        if event.type == JOYSTICKAXISMOTION:
+        if event.type == pygame.JOYAXISMOTION:
             left_motor_speed = joystick.get_axis(left_y_axis)
             right_motor_speed = joystick.get_axis(right_y_axis)
             if math.fabs(left_motor_speed) <= joystick_deadzone:
@@ -141,7 +140,7 @@ def manual():
     try:
         print('Press [ESC] to quit')
         while 1:
-            jesses_handler(events)
+            jesses_handler(pygame.event.get())
     except KeyboardInterrupt:
         motor_off()
 
