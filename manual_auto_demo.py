@@ -138,19 +138,21 @@ def jesses_handler(events, joystick):
             print("left_motor_direction: {}".format(left_motor_forward))
             print("right_motor_direction: {}".format(right_motor_forward))
 
+manual_init=True
 
 def manual():
+    global manual_init
     global joystick
-    pygame.init()
-    pygame.joystick.init()
-    pygame.display.init()
-    joystick = pygame.joystick.Joystick(0)
-    joystick.init()
-    pygame.display.set_caption("JoyBorg - Press [ESC] to quit")
+    if manual_init:
+        manual_init = False
+        global joystick
+        pygame.init()
+        pygame.joystick.init()
+        pygame.display.init()
+        joystick = pygame.joystick.Joystick(0)
+        joystick.init()
     try:
-        print('Press [ESC] to quit')
-        while 1:
-            jesses_handler(pygame.event.get(), joystick)
+        jesses_handler(pygame.event.get(), joystick)
     except KeyboardInterrupt:
         motor_off()
 
