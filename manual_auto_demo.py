@@ -110,7 +110,7 @@ pause = 0.1
 # joystick.init()
 # pygame.display.set_caption("JoyBorg - Press [ESC] to quit")
 
-left_y_axis = -1
+left_y_axis = 1
 right_y_axis = 3
 joystick_deadzone = 0.15
 events = pygame.event.get
@@ -130,7 +130,7 @@ def jesses_handler(events, joystick):
             right_motor_speed = math.fabs(right_motor_speed) * 100
             s1.set_motor(left_motor_speed, p1)
             s2.set_motor(right_motor_speed, p2)
-            m1.change_direction("forward" if left_motor_forward else "reverse")
+            m1.change_direction("reverse" if left_motor_forward else "forward")
             m2.change_direction("forward" if right_motor_forward else "reverse")
             print("left_motor_speed: {}".format(left_motor_speed))
             print("right_motor_speed: {}".format(right_motor_speed))
