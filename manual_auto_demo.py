@@ -182,7 +182,7 @@ def automatic(X, Y, HEDGE):
     m_c = numpy.sqrt(xdiff * xdiff + ydiff * ydiff)
     print(m_c)
     print("Current position: ({}, {})".format(x, y))
-    speed = (m_c / m_i) * 100
+    speed = math.fabs((m_c / m_i) * 100)
     print("speed magnitude: {}".format(speed))
     s1.set_motor(speed, p1)
     s2.set_motor(speed, p2)
@@ -192,14 +192,16 @@ def automatic(X, Y, HEDGE):
         turn_left_90()
         motor_off()
         time.sleep(1.5)
-        return
+        return True
 
     else:
         print("STATE_FORWARD")
         m1.change_direction("forward")
         m2.change_direction("forward")
+        return False
 
 def main():
+    auton_target = (5.7, -4.2)
     pygame.init()
     pygame.joystick.init()
     pygame.display.init()
@@ -217,7 +219,16 @@ def main():
         elif m_held:
             auton=False
         if auton:
-            automatic(5.7, -4.2, HEDGE)
+            if automatic(auton_target[0], auton_target[1], HEDGE):
+                auton_init=False
+                if auton_target == (5.7, -4.2):
+                    auton_target = (8.5, -1.7)
+                elif auton_target == (8.5, -1.7):
+                    auton_target = (4.5, 2.5)
+                elif auton_target == (4.5, 2.5):
+                    auton_target = (2.3, 0.1)
+                elif auton_target == (2.3, 0.1):
+                    auton_target = (5.7, -4.2)
         else:
             manual()
 
