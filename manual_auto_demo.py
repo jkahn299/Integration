@@ -102,11 +102,11 @@ axisUpDownInverted = False
 axisLeftRightInverted = False
 pause = 0.1
 
-pygame.init()
-pygame.joystick.init()
-joystick = pygame.joystick.Joystick(0)
-joystick.init()
-pygame.display.set_caption("JoyBorg - Press [ESC] to quit")
+# pygame.init()
+# pygame.joystick.init()
+# joystick = pygame.joystick.Joystick(0)
+# joystick.init()
+# pygame.display.set_caption("JoyBorg - Press [ESC] to quit")
 
 left_y_axis = 1
 right_y_axis = 3
@@ -137,6 +137,11 @@ def jesses_handler(events):
 
 
 def manual():
+    pygame.init()
+    pygame.joystick.init()
+    joystick = pygame.joystick.Joystick(0)
+    joystick.init()
+    pygame.display.set_caption("JoyBorg - Press [ESC] to quit")
     try:
         print('Press [ESC] to quit')
         while 1:
