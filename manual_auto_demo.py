@@ -159,6 +159,7 @@ HEDGE.start()
 auton_init=True
 def automatic(X, Y, HEDGE):
     global auton_init
+    global pos, x, y, xdiff, ydiff, m_i
     if auton_init:
         auton_init = False
         pos = HEDGE.position()
