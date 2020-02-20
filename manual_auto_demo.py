@@ -115,7 +115,7 @@ right_y_axis = 3
 joystick_deadzone = 0.15
 events = pygame.event.get
 
-def jesses_handler(events):
+def jesses_handler(events, joystick):
     for event in events:
         if event.type == pygame.JOYAXISMOTION:
             left_motor_speed = joystick.get_axis(left_y_axis)
@@ -148,7 +148,7 @@ def manual():
     try:
         print('Press [ESC] to quit')
         while 1:
-            jesses_handler(pygame.event.get())
+            jesses_handler(pygame.event.get(), joystick)
     except KeyboardInterrupt:
         motor_off()
 
