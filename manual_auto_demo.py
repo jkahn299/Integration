@@ -196,8 +196,6 @@ def automatic(X, Y, HEDGE):
         m1.change_direction("forward")
         m2.change_direction("forward")
 
-    time.sleep(1)
-
 def main():
     pygame.init()
     pygame.joystick.init()
