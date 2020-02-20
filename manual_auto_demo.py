@@ -1,6 +1,6 @@
 import sys
 import time
-
+import fakehedge
 import RPi.GPIO as GPIO
 import numpy
 import pygame
@@ -75,7 +75,7 @@ def motor_off():
 MIN_SPEED = 10
 MAX_SPEED = 100
 
-RIGHT_ANGLE_TURN_SECS = 5
+RIGHT_ANGLE_TURN_SECS = 3
 
 m1 = direction("ONE")
 m2 = direction("TWO")
@@ -84,8 +84,8 @@ s2 = speed()
 
 
 def turn_left_90():
-    m1.change_direction("forward")
-    m2.change_direction("reverse")
+    m1.change_direction("reverse")
+    m2.change_direction("forward")
     s1.set_motor(25, p1)
     s2.set_motor(25, p2)
     time.sleep(RIGHT_ANGLE_TURN_SECS)
@@ -153,7 +153,9 @@ def manual():
         motor_off()
 
 
-HEDGE = MarvelmindHedge(tty="/dev/ttyACM0", adr=10, debug=False)
+#HEDGE = MarvelmindHedge(tty="/dev/ttyACM0", adr=10, debug=False)
+#HEDGE.start()
+HEDGE = fakehedge.Schmedge()
 HEDGE.start()
 
 auton_init=True
@@ -215,7 +217,7 @@ def main():
         elif m_held:
             auton=False
         if auton:
-            automatic(0,0,HEDGE)
+            automatic(5.7, -4.2, HEDGE)
         else:
             manual()
 

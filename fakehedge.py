@@ -18,11 +18,14 @@ class Schmedge(threading.Thread):
     def position(self):
         return None, self._x, self._y
 
+    def stop(self):
+        pass
+
     def run(self):
         while True:
             self._x = round(self._x, 1)
             self._y = round(self._y, 1)
-            time.sleep(0.3)
+            time.sleep(0.5)
             if self._state == State.FORWARD1:
                 if self._x == 5.7 and self._y == -4.2:
                     self._state = State.LEFT1
