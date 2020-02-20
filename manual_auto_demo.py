@@ -1,6 +1,6 @@
 import sys
 import time
-
+import fakehedge
 import RPi.GPIO as GPIO
 import numpy
 import pygame
@@ -153,7 +153,9 @@ def manual():
         motor_off()
 
 
-HEDGE = MarvelmindHedge(tty="/dev/ttyACM0", adr=10, debug=False)
+#HEDGE = MarvelmindHedge(tty="/dev/ttyACM0", adr=10, debug=False)
+#HEDGE.start()
+HEDGE = fakehedge.Schmedge()
 HEDGE.start()
 
 auton_init=True
@@ -215,7 +217,7 @@ def main():
         elif m_held:
             auton=False
         if auton:
-            automatic(0,0,HEDGE)
+            automatic(5.7, -4.2, HEDGE)
         else:
             manual()
 
