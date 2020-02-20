@@ -230,8 +230,8 @@ def main():
                 elif auton_target == (8.5, -1.7):
                     auton_target = (4.5, 2.5)
                 elif auton_target == (4.5, 2.5):
-                    auton_target = (2.3, 0.1)
-                elif auton_target == (2.3, 0.1):
+                    auton = False
+                    auton_init = True
                     auton_target = (5.7, -4.2)
         else:
             manual()
