@@ -205,6 +205,7 @@ def main():
     global joystick
     global auton_init
     while 1:
+        pygame.event.pump()
         if joystick.get_button(6): # L1
             print(auton)
             auton=not auton
